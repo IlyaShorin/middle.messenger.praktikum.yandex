@@ -9,9 +9,6 @@ import { changePasswordPage } from './pages/change-password/index.js';
 
 const app = document.getElementById('root');
 
-const protocol =
-  window.location.host === 'localhost:3000' ? 'http://' : 'https://';
-
 document.addEventListener('DOMContentLoaded', () => {
   const backButton = document.getElementById('back-button');
   const goToProfileButton = document.getElementById('go-to-profile-button');
@@ -24,53 +21,43 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   const savePasswordButton = document.getElementById('save-password-button');
   const exitButton = document.getElementById('exit-button');
-  backButton &&
-    backButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      history.back();
-    });
-  goToProfileButton &&
-    goToProfileButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/profile`;
-    });
-  saveProfileButton &&
-    saveProfileButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/profile`;
-    });
-  editButton &&
-    editButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/edit-profile`;
-    });
 
-  loginButton &&
-    loginButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/main`;
-    });
-
-  registerButton &&
-    registerButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/login`;
-    });
-  changePasswordButton &&
-    changePasswordButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = `${protocol}${window.location.host}/change-password`;
-    });
-  savePasswordButton &&
-    savePasswordButton.addEventListener('click', (e) => {
-      e.preventDefault(e);
-      window.location.href = `${protocol}${window.location.host}/profile`;
-    });
-  exitButton &&
-    exitButton.addEventListener('click', (e) => {
-      e.preventDefault(e);
-      window.location.href = `${protocol}${window.location.host}/login`;
-    });
+  backButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    history.back();
+  });
+  goToProfileButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+  });
+  saveProfileButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+  });
+  editButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/edit-profile`;
+  });
+  loginButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/main`;
+  });
+  registerButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/login`;
+  });
+  changePasswordButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${window.location.protocol}${window.location.host}/change-password`;
+  });
+  savePasswordButton?.addEventListener('click', (e) => {
+    e.preventDefault(e);
+    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+  });
+  exitButton?.addEventListener('click', (e) => {
+    e.preventDefault(e);
+    window.location.href = `${window.location.protocol}${window.location.host}/login`;
+  });
 });
 
 const routes = {

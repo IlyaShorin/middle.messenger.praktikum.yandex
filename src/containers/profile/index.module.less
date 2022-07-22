@@ -1,3 +1,4 @@
+@import '../../styles/consts.less';
 .container {
   width: 100%;
   display: flex;
@@ -13,19 +14,19 @@
 .text {
   font-size: 13px;
   line-height: 13px;
-  color: #3369f3;
+  color: @primary-text;
   width: 100%;
   padding: 0;
   outline: none;
   border: none;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid @border-color;
   padding-bottom: 10px;
   margin-bottom: 10px;
   text-align: start;
   background-color: transparent;
 }
 .warningText {
-  color: #ff0000;
+  color: @warning-text;
 }
 .text:hover {
   cursor: pointer;

@@ -9,12 +9,7 @@ export default ({ avatar, recipientName }) => {
   return Handlebars.compile(tmpl)({
     avatar,
     recipientName,
-    // styles,
-    header: styles.header,
-    dotsButtonClass: styles.dotsButtonClass,
-    dotsContainer: styles.dotsContainer,
+    styles,
     dots,
-    recipient: styles.recipient,
-    avatarClass: styles.avatar,
   });
 };
