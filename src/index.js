@@ -80,7 +80,6 @@ const routes = {
   editProfile: editProfilePage,
   changePassword: changePasswordPage,
 };
-console.log(window.location.pathname.slice(1));
 
 switch (window.location.pathname.slice(1)) {
   case 'signup':
@@ -107,7 +106,6 @@ switch (window.location.pathname.slice(1)) {
   case 'change-password':
     app.innerHTML = routes.changePassword;
     break;
-
   default:
     app.innerHTML = routes.notFound;
     break;
