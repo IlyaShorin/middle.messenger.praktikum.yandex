@@ -26,37 +26,38 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     history.back();
   });
+
   goToProfileButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+    window.location.href = `${window.location.origin}/profile`;
   });
   saveProfileButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+    window.location.href = `${window.location.origin}/profile`;
   });
   editButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/edit-profile`;
+    window.location.href = `${window.location.origin}/edit-profile`;
   });
   loginButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/main`;
+    window.location.href = `${window.location.origin}/main`;
   });
   registerButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/login`;
+    window.location.href = `${window.location.origin}/login`;
   });
   changePasswordButton?.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = `${window.location.protocol}${window.location.host}/change-password`;
+    window.location.href = `${window.location.origin}/change-password`;
   });
   savePasswordButton?.addEventListener('click', (e) => {
     e.preventDefault(e);
-    window.location.href = `${window.location.protocol}${window.location.host}/profile`;
+    window.location.href = `${window.location.origin}/profile`;
   });
   exitButton?.addEventListener('click', (e) => {
     e.preventDefault(e);
-    window.location.href = `${window.location.protocol}${window.location.host}/login`;
+    window.location.href = `${window.location.origin}/login`;
   });
 });
 
