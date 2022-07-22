@@ -2,6 +2,8 @@
 
 Макет в [figma](https://www.figma.com/file/RFINpZyMaJfZUmeLb99NbU/Chat)
 
+[Стабильный билд](https://lambent-meringue-52b6d7.netlify.app)
+
 Команды для запуска
 
 - `npm install` — установка стабильной версии,
