@@ -3,7 +3,7 @@ import tmpl from 'bundle-text:./tmpl.hbs';
 import profileForm from '../../components/profile-form';
 import profileAvatar from '../../components/profile-avatar';
 import backFromProfileButton from '../../components/back-from-profile-button';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 
 Handlebars.registerPartial('profile', tmpl);
 

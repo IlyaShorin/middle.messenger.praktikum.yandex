@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import tmpl from 'bundle-text:./tmpl.hbs';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 import * as arrowRight from '../../images/arrow.svg';
 import * as attachIcon from '../../images/attach.svg';
 

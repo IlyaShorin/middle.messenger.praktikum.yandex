@@ -3,7 +3,7 @@ import tmpl from 'bundle-text:./tmpl.hbs';
 import inputComponent from '../../components/input';
 import primaryButton from '../../components/primary-button';
 import linkButton from '../../components/link-button';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 
 Handlebars.registerPartial('signupForm', tmpl);
 

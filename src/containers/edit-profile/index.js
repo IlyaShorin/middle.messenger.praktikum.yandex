@@ -4,7 +4,7 @@ import profileForm from '../../components/profile-form';
 import profileAvatar from '../../components/profile-avatar';
 import primaryButton from '../../components/primary-button';
 import backFromProfileButton from '../../components/back-from-profile-button';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 
 Handlebars.registerPartial('editProfile', tmpl);
 

@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import tmpl from 'bundle-text:./tmpl.hbs';
 import changePassword from '../../containers/change-password/index.js';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 
 Handlebars.registerPartial('changePassword', tmpl);
 

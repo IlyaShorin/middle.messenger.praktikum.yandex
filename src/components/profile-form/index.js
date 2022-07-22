@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import tmpl from 'bundle-text:./tmpl.hbs';
 import profileInput from '../profile-input';
-import styles from './index.module.less';
+import * as styles from './index.module.less';
 
 Handlebars.registerPartial('profileForm', tmpl);
 

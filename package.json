@@ -2,12 +2,11 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "messenger app",
-  "main": "index.js",
   "engine": "14.19.3",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.html --no-source-maps --target default --dist-dir ./dist --no-cache",
-    "build": "parcel build",
+    "build": "parcel build ./src/index.html",
     "start:server": "node ./src/app.js"
   },
   "repository": {
@@ -37,6 +36,12 @@
   "targets": {
     "default": {
       "sourceMap": false
+    },
+    "frontend": {
+      "source": "src/index.html"
+    },
+    "backend": {
+      "source": "src/app.js"
     }
   },
   "dependencies": {
