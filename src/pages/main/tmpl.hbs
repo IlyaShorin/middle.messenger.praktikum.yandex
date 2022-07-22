@@ -1,0 +1,15 @@
+<div class='mainPage'>
+  <div class='leftScreen'>
+    <button class='editProfileButton' id='go-to-profile-button'>Профиль ></button>
+    {{{search}}}
+    {{{chatList}}}
+  </div>
+  <div class='rightScreen'>
+    {{#if chatIsSelected}}
+      {{{chatContainer}}}
+    {{else}}
+      <div class='chatIsNotSelected'><p class='tipText'>Выберите чат чтобы
+          отправить сообщение</p></div>
+    {{/if}}
+  </div>
+</div>

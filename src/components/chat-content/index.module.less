@@ -1,0 +1,33 @@
+@radius: 12px;
+@maxWidth: 400px;
+@margin: 30px;
+@padding: 11px;
+.chatContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.friendMessage {
+  background-color: #f8f8f8;
+  border-radius: @radius;
+  text-align: center;
+  max-width: 400px;
+  padding: @padding;
+  margin-bottom: @margin;
+  margin-left: @margin;
+  text-align: left;
+}
+
+.yourMessage {
+  border-radius: @radius;
+  background-color: #e4edfd;
+  text-align: center;
+  max-width: 400px;
+  align-self: flex-end;
+  padding: @padding;
+  margin-bottom: @margin;
+  margin-right: @margin;
+  text-align: left;
+}
