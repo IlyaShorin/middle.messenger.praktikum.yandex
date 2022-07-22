@@ -6,7 +6,7 @@
   "engine": "14.19.3",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.html --no-source-maps --target default --dist-dir ./build --no-cache",
+    "start": "parcel ./src/index.html --no-source-maps --target default --dist-dir ./dist --no-cache",
     "build": "parcel build",
     "start:server": "node ./src/app.js"
   },
