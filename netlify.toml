@@ -7,5 +7,5 @@
 
 [build]
   command = "npm run-script build"
-  publish = "dist"
+  publish = "dist/default"
   
