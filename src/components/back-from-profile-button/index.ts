@@ -9,6 +9,15 @@ export class BackFromProfileButton extends Component {
     props['attr'].class = styles['container'];
     super(tag, props);
   }
+  addEvents(): void {
+    this.element.querySelector('button')!.addEventListener('click', () => {
+      if (window.location.href === 'profile') {
+        window.location.href = `${window.location.origin}/main`;
+      } else {
+        window.location.href = `${window.location.origin}/profile`;
+      }
+    });
+  }
 
   render() {
     return `

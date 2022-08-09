@@ -31,11 +31,6 @@ export const editProfilePage = new EditProfileComponent('div', {
     profileForm: ProfileForm(user, false),
     backFromProfileButton: new BackFromProfileButton('div', {
       attr: {},
-      events: {
-        click: () => {
-          window.location.href = `${window.location.origin}/profile`;
-        },
-      },
     }),
   }),
 });

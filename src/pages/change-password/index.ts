@@ -51,11 +51,6 @@ export const changePasswordPage = new ChangePasswordPage('div', {
     },
     backFromProfileButton: new BackFromProfileButton('div', {
       attr: {},
-      events: {
-        click: () => {
-          window.location.href = `${window.location.origin}/profile`;
-        },
-      },
     }),
     profileAvatar: new ProfileAvatar('div', { attr: {}, user }),
     submit: new PrimaryButton('button', {
