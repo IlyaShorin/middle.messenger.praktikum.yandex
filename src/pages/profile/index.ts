@@ -30,6 +30,11 @@ export const profilePage = new ProfilePage('div', {
     editProfileButton: new LinkButton('button', {
       attr: { class: styles['text'] },
       value: 'Изменить данные',
+      events: {
+        click: () => {
+          window.location.href = `${window.location.origin}/edit-profile`;
+        },
+      },
     }),
     changePasswordButton: new LinkButton('button', {
       attr: { class: styles['text'] },
