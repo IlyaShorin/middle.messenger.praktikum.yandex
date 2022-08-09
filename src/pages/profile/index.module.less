@@ -1,6 +1,28 @@
+@import '../../styles/consts.less';
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
+}
+
+.text {
+  font-size: 13px;
+  line-height: 13px;
+  color: @primary-text;
+  width: 100%;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid @border-color;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-align: start;
+  background-color: transparent;
+}
+
+.warningText {
+  color: @warning-text;
 }
