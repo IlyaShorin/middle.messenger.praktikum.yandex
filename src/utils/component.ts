@@ -19,9 +19,9 @@ export abstract class Component {
   _props;
 
   _children:
-  | { [s: string]: { [key: string]: string } }
-  | { [s: string]: () => void }
-  | ArrayLike<{ [key: string]: string }>;
+    | { [s: string]: { [key: string]: string } }
+    | { [s: string]: () => void }
+    | ArrayLike<{ [key: string]: string }>;
 
   _id;
 
@@ -56,11 +56,11 @@ export abstract class Component {
     this._eventBus.on(Component.EVENTS.INIT, this.init.bind(this));
     this._eventBus.on(
       Component.EVENTS.FLOW_CDM,
-      this._componentDidMount.bind(this),
+      this._componentDidMount.bind(this)
     );
     this._eventBus.on(
       Component.EVENTS.FLOW_CDU,
-      this._componentDidUpdate.bind(this),
+      this._componentDidUpdate.bind(this)
     );
     this._eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
@@ -78,7 +78,7 @@ export abstract class Component {
     return element;
   }
 
-  _render() {
+  private _render() {
     const block = this.compile();
     this.removeEvents();
     this._element!.innerHTML = '';
@@ -137,7 +137,7 @@ export abstract class Component {
 
   compile() {
     const fragment = this._createDocumentElement(
-      'template',
+      'template'
     ) as HTMLTemplateElement;
 
     fragment.innerHTML = this.precompile();
@@ -152,9 +152,11 @@ export abstract class Component {
     return fragment.content;
   }
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
-    Object.values(this._children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this._children).forEach((child) =>
+      child.dispatchComponentDidMount()
+    );
   }
 
   componentDidMount() {}
@@ -166,7 +168,7 @@ export abstract class Component {
     }
   }
 
-  _componentDidUpdate(oldProps: {}, newProps: {}) {
+  private _componentDidUpdate(oldProps: {}, newProps: {}) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -202,16 +204,15 @@ export abstract class Component {
   };
 
   makePropsProxy(props: { [key: string]: (() => void) | string }) {
-    const self = this;
     return new Proxy(props, {
-      get(target: any, prop: string) {
+      get: (target: any, prop: string) => {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value; // Reflect
       },
-      set(target: any, prop: string, value) {
+      set: (target: any, prop: string, value) => {
         if (target[prop] !== value) {
           target[prop] = value;
-          self._update = true;
+          this._update = true;
         }
         return true; // Reflect
       },

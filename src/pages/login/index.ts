@@ -1,7 +1,7 @@
 import { PrimaryButton } from '../../components/primary-button';
 import { Input } from '../../components/input';
 import { Component } from '../../utils/component';
-import { validationListener } from '../../utils/validation';
+import { submit } from '../../utils/submit';
 
 import styles from './index.module.less';
 import { LinkButton } from '../../components/link-button';
@@ -22,24 +22,7 @@ class LoginForm extends Component {
 }
 export const loginPage = new LoginForm('div', {
   events: {
-    submit: (e: SubmitEvent) => {
-      e.preventDefault();
-      if (validationListener({ element: document.querySelector('label')! })) {
-        const form = document.querySelector('form');
-        const data = new FormData();
-        form!.querySelectorAll('input').forEach((input) => {
-          data.set(input.name, input.value);
-        });
-        for (const [key, value] of data) {
-          console.log(key, ':', value);
-        }
-        window.location.href = `${window.location.origin}/main`;
-      } else {
-        document.querySelectorAll('label').forEach((field) => {
-          validationListener({ element: field });
-        });
-      }
-    },
+    submit,
   },
   submit: new PrimaryButton('button', {
     value: 'Войти',
@@ -50,7 +33,7 @@ export const loginPage = new LoginForm('div', {
   login: new Input('label', {
     label: 'Логин',
     name: 'login',
-
+    type: 'text',
     attr: {
       class: styles['inputLogin'],
     },

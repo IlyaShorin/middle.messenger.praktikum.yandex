@@ -1,9 +1,9 @@
 import {
-  loginRegExp,
-  passwordRegExp,
-  emailRegExp,
-  phoneRegExp,
-  firstSecondNameRegExp,
+  LOGIN_REGEXP,
+  PASSWORD_REGEXP,
+  EMAIL_REGEXP,
+  PHONE_REGEXP,
+  FIRST_SECOND_NAME_REGEXP,
 } from './consts';
 
 export const validationListener = ({ element }: { element: HTMLElement }) => {
@@ -14,7 +14,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
 
   switch (input.name) {
     case 'login':
-      if (!loginRegExp!.test(input!.value)) {
+      if (!LOGIN_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите логин в правильном формате';
         isValid = false;
@@ -24,7 +24,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
       }
       break;
     case 'password':
-      if (!passwordRegExp!.test(input!.value)) {
+      if (!PASSWORD_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите пароль в правильном формате';
         isValid = false;
@@ -34,7 +34,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
       }
       break;
     case 'email':
-      if (!emailRegExp!.test(input!.value)) {
+      if (!EMAIL_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите email в правильном формате';
         isValid = false;
@@ -44,7 +44,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
       }
       break;
     case 'phone':
-      if (!phoneRegExp!.test(input!.value)) {
+      if (!PHONE_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите телефон в правильном формате';
         isValid = true;
@@ -54,7 +54,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
       }
       break;
     case 'first_name':
-      if (!firstSecondNameRegExp!.test(input!.value)) {
+      if (!FIRST_SECOND_NAME_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите имя в правильном формате';
         isValid = false;
@@ -64,7 +64,7 @@ export const validationListener = ({ element }: { element: HTMLElement }) => {
       }
       break;
     case 'second_name':
-      if (!firstSecondNameRegExp!.test(input!.value)) {
+      if (!FIRST_SECOND_NAME_REGEXP!.test(input!.value)) {
         element.querySelector('p')!.innerHTML =
           'Введите фамилию в правильном формате';
         isValid = false;

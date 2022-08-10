@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 const express = require('express');
 const path = require('path');
 
-const PORT = 3000;
+const { PORT = 3000 } = process.env;
 
 const buildDirPath: string = path.join(__dirname, '../', 'dist/default');
 

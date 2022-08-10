@@ -1,7 +1,7 @@
 import { Component } from '../../utils/component';
 import styles from './index.module.less';
 
-class ChatBoxComponent extends Component {
+export class ChatBox extends Component {
   render() {
     return `
     <li class='${styles['list']}'>
@@ -17,7 +17,7 @@ class ChatBoxComponent extends Component {
         {{/if}}
       </div>
       <div class='${styles['timeAndCountContainer']}'>
-        <p class='${styles['time']}'>{{messageTime}}</p>
+        <time class='${styles['time']}'>{{messageTime}}</time>
         {{#if count}}
           <div class='${styles['messagesCount']}'>{{count}}</div>
         {{/if}}
@@ -27,7 +27,3 @@ class ChatBoxComponent extends Component {
   `;
   }
 }
-
-export const ChatBox = (props: Record<string, unknown>) => new ChatBoxComponent('li', {
-  ...props,
-});

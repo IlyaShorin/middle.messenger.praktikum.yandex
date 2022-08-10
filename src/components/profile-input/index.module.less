@@ -2,7 +2,6 @@
 
 .input {
   border: none;
-  outline: none;
 }
 
 .input:disabled {
@@ -12,7 +11,7 @@
 .label {
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: @profile-input-label;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -31,6 +30,6 @@
 }
 
 .error {
-  color: red;
+  color: @warning-text;
   margin-top: 10px;
 }

@@ -1,3 +1,4 @@
+@import '../../styles/consts.less';
 @radius: 12px;
 @maxWidth: 400px;
 @margin: 30px;
@@ -11,7 +12,7 @@
 }
 
 .friendMessage {
-  background-color: #f8f8f8;
+  background-color: @friend-message-bg;
   border-radius: @radius;
   max-width: 400px;
   padding: @padding;
@@ -22,7 +23,7 @@
 
 .yourMessage {
   border-radius: @radius;
-  background-color: #e4edfd;
+  background-color: @your-message-bg;
   max-width: 400px;
   align-self: flex-end;
   padding: @padding;

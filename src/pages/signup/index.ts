@@ -1,7 +1,7 @@
 import { PrimaryButton } from '../../components/primary-button';
 import { Input } from '../../components/input';
 import { Component } from '../../utils/component';
-import { validationListener } from '../../utils/validation';
+import { submit } from '../../utils/submit';
 
 import styles from './index.module.less';
 import { LinkButton } from '../../components/link-button';
@@ -29,24 +29,7 @@ class SignupForm extends Component {
 }
 export const signupPage = new SignupForm('div', {
   events: {
-    submit: (e: SubmitEvent) => {
-      e.preventDefault();
-      if (validationListener({ element: document.querySelector('label')! })) {
-        const form = document.querySelector('form');
-        const data = new FormData();
-        form!.querySelectorAll('input').forEach((input) => {
-          data.set(input.name, input.value);
-        });
-        for (const [key, value] of data) {
-          console.log(key, ':', value);
-        }
-        window.location.href = `${window.location.origin}/login`;
-      } else {
-        document.querySelectorAll('label').forEach((field) => {
-          validationListener({ element: field });
-        });
-      }
-    },
+    submit,
   },
   email: new Input('label', {
     label: 'Email',
@@ -54,6 +37,7 @@ export const signupPage = new SignupForm('div', {
     attr: {
       class: styles['input'],
     },
+    type: 'email',
   }),
   login: new Input('label', {
     label: 'Логин',
@@ -61,6 +45,7 @@ export const signupPage = new SignupForm('div', {
     attr: {
       class: styles['input'],
     },
+    type: 'text',
   }),
   name: new Input('label', {
     label: 'Имя',
@@ -68,6 +53,7 @@ export const signupPage = new SignupForm('div', {
     attr: {
       class: styles['input'],
     },
+    type: 'text',
   }),
   lastName: new Input('label', {
     label: 'Фамилия',
@@ -75,6 +61,7 @@ export const signupPage = new SignupForm('div', {
     attr: {
       class: styles['input'],
     },
+    type: 'text',
   }),
   phoneNumber: new Input('label', {
     label: 'Номер телефона',
@@ -82,12 +69,12 @@ export const signupPage = new SignupForm('div', {
     attr: {
       class: styles['input'],
     },
+    type: 'tel',
   }),
   password: new Input('label', {
     name: 'password',
     label: 'Пароль',
     type: 'password',
-    id: 'password',
     attr: {
       class: styles['input'],
     },
@@ -96,7 +83,6 @@ export const signupPage = new SignupForm('div', {
     name: 'confirmPassword',
     label: 'Пароль ещё раз',
     type: 'password',
-    id: 'confirmPassword',
     attr: {
       class: styles['input'],
     },

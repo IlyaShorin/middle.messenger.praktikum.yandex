@@ -37,15 +37,18 @@ class ChatListComponent extends Component {
   }
 }
 
-export const ChatList = () => new ChatListComponent('ul', {
-  attr: { class: 'chatList' },
-  messages: messagesArray.map((message, index) => ChatBox({
-    avatar: message.avatar,
-    message: message.message,
-    messageTime: message.messageTime,
-    senderIsYou: message.senderIsYou,
-    recipientName: message.recipientName,
-    count: message.count,
-    index,
-  }).precompile()),
-});
+export const ChatList = () =>
+  new ChatListComponent('ul', {
+    attr: { class: 'chatList' },
+    messages: messagesArray.map((message, index) =>
+      new ChatBox('li', {
+        avatar: message.avatar,
+        message: message.message,
+        messageTime: message.messageTime,
+        senderIsYou: message.senderIsYou,
+        recipientName: message.recipientName,
+        count: message.count,
+        index,
+      }).precompile()
+    ),
+  });

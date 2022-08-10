@@ -1,10 +1,18 @@
 import { Component } from '../../utils/component';
-import { Props } from '../../utils/types';
 import * as styles from './index.module.less';
 
 export class ChatContent extends Component {
-  constructor(tag: string, props: Props) {
-    props['attr'].class = styles['chatContent'];
+  constructor(
+    tag: string,
+    props: {
+      attr?: { class?: string };
+      messages: {
+        yourMessage: boolean;
+        text: string;
+      }[];
+    }
+  ) {
+    props.attr = { class: styles['chatContent'] };
     super(tag, props);
   }
 

@@ -1,21 +1,13 @@
-const METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-};
-
-function queryStringify(data: { [key: string]: string }) {
-  let str = '?';
-  for (let key in data) {
-    str = str + `${key}=${data[key]}&`;
-  }
-  str = str.slice(0, str.length - 1);
-  return str;
-}
+import { queryStringify } from './helpers';
+import { METHODS } from './consts';
 
 class HTTPTransport {
-  get = (url: string, options: { timeout?: number } = {}) => {
+  get = (
+    url: string,
+    options: { timeout?: number; method?: string; data?: {} } = {}
+  ) => {
+    const { data } = options;
+    url = `${url}${queryStringify(data as {})}`;
     return this.request(
       url,
       { ...options, method: METHODS.GET },
@@ -62,11 +54,8 @@ class HTTPTransport {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
-      xhr.open(
-        method,
-        isGet && !!data ? `${url}${queryStringify(data as {})}` : url
-      );
+
+      xhr.open(method, url);
       for (let header in headers) {
         xhr.setRequestHeader(header, headers[header]!);
       }

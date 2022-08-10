@@ -3,18 +3,9 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { EditProfile } from '../../containers/edit-profile';
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
+import { USER } from '../../utils/fixtures';
 
 import * as styles from './index.module.less';
-
-const user = {
-  email: 'shorin@mail.ru',
-  login: 'ishorin',
-  first_name: 'Илья',
-  second_name: 'Шорин',
-  phone: '+799912345678',
-  display_name: 'Илья',
-  avatar: 'https://picsum.photos/200',
-};
 
 class EditProfileComponent extends Component {
   render() {
@@ -27,10 +18,20 @@ export const editProfilePage = new EditProfileComponent('div', {
   attr: { class: styles['container'] },
   editProfile: new EditProfile('div', {
     attr: { class: styles['container'] },
-    profileAvatar: new ProfileAvatar('div', { attr: {}, user }),
-    profileForm: ProfileForm(user, false),
+    profileAvatar: new ProfileAvatar('div', {
+      avatar: USER.avatar,
+      first_name: USER.first_name,
+    }),
+    profileForm: ProfileForm(USER, false),
     backFromProfileButton: new BackFromProfileButton('div', {
-      attr: {},
+      events: {
+        click: (e: MouseEvent) => {
+          const div = e.target as HTMLElement;
+          if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
+            window.location.href = `${window.location.origin}/profile`;
+          }
+        },
+      },
     }),
   }),
 });

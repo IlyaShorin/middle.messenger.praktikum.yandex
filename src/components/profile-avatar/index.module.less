@@ -1,3 +1,5 @@
+@import '../../styles/consts.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
 }
 
 .edit {
-  background-color: black;
+  background-color: @black;
   opacity: 0;
   position: absolute;
   width: 130px;
@@ -36,7 +38,7 @@
   outline: none;
   border: none;
   background-color: transparent;
-  color: white;
+  color: @white;
 }
 
 .editButton:hover {

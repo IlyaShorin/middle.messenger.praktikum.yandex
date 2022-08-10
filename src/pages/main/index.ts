@@ -25,7 +25,7 @@ class MainPage extends Component {
   `;
   }
 }
-// <button class='editProfileButton' id='go-to-profile-button' >Профиль ></button>
+
 export const mainPage = new MainPage('div', {
   attr: { class: 'mainPage' },
   search: new Search('input', {

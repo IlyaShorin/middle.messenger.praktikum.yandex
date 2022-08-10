@@ -1,13 +1,12 @@
 import { Component } from '../../utils/component';
-import { messageFieldRegExp } from '../../utils/consts';
-import { Props } from '../../utils/types';
+import { MESSAGE_FIELD_REGEXP } from '../../utils/consts';
 import * as styles from './index.module.less';
 import * as arrowRight from '../../images/arrow.svg';
 import * as attachIcon from '../../images/attach.svg';
 
 export class ChatFooter extends Component {
-  constructor(tag: string, props: Props) {
-    props['attr'].class = styles['footer'];
+  constructor(tag: string, props: { attr?: { class?: string } }) {
+    props.attr = { class: styles['footer'] };
     super(tag, props);
   }
 
@@ -17,7 +16,7 @@ export class ChatFooter extends Component {
       .addEventListener('submit', (e: SubmitEvent) => {
         e.preventDefault();
         if (
-          messageFieldRegExp!.test(this.element.querySelector('input')!.value)
+          MESSAGE_FIELD_REGEXP!.test(this.element.querySelector('input')!.value)
         ) {
           console.log(this.element.querySelector('input')!.value);
         } else {
@@ -30,7 +29,7 @@ export class ChatFooter extends Component {
     return `
    
   <button class='${styles['attachButton']}'>
-    <img src='${attachIcon}' />
+    <img src='${attachIcon}' alt='добавить файл' />
   </button>
   <form class='${styles['form']}'>
   <input

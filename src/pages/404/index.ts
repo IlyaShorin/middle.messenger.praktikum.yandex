@@ -14,7 +14,6 @@ class NotFoundPage extends Component {
 export const notFoundPage = new NotFoundPage('div', {
   attr: { class: 'container' },
   linkButton: new LinkButton('button', {
-    attr: {},
     value: 'Назад',
     events: {
       click: () => {

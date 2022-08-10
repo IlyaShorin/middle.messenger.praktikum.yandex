@@ -16,7 +16,6 @@ class ErrorOnServerPage extends Component {
 export const errorOnServerPage = new ErrorOnServerPage('div', {
   attr: { class: 'container' },
   linkButton: new LinkButton('button', {
-    attr: {},
     value: 'Назад',
     events: {
       click: () => {
