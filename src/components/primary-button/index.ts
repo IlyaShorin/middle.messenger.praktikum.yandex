@@ -10,7 +10,7 @@ export class PrimaryButton extends Component {
       events?: { submit: (e: SubmitEvent) => void };
     }
   ) {
-    props.attr = { class: `primaryButton ${props.attr?.class}` };
+    props.attr = { ...props.attr, class: `primaryButton ${props.attr?.class}` };
 
     super(tag, props);
   }

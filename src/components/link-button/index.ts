@@ -11,7 +11,7 @@ export class LinkButton extends Component {
       events?: { click: () => void };
     }
   ) {
-    props.attr = { class: `linkButton ${props.attr?.class}` };
+    props.attr = { ...props.attr, class: `linkButton ${props.attr?.class}` };
     super(tag, props);
   }
 
