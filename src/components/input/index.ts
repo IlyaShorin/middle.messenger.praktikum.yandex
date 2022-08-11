@@ -18,12 +18,12 @@ export class Input extends Component {
   }
 
   addEvents(): void {
-    this.element.querySelector('input')!.addEventListener('focus', () =>
+    this.element.querySelector('input')?.addEventListener('focus', () =>
       validationListener({
         element: this.element,
       })
     );
-    this.element.querySelector('input')!.addEventListener('blur', () =>
+    this.element.querySelector('input')?.addEventListener('blur', () =>
       validationListener({
         element: this.element,
       })

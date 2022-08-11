@@ -1,4 +1,5 @@
 import { validationListener } from './validation';
+
 export const submit = (e: SubmitEvent) => {
   e.preventDefault();
   if (validationListener({ element: document.querySelector('label')! })) {

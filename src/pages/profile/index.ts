@@ -58,7 +58,7 @@ export const profilePage = new ProfilePage('div', {
     }),
     profileAvatar: new ProfileAvatar('div', {
       avatar: USER.avatar,
-      first_name: USER.first_name,
+      firstName: USER.first_name,
     }),
     profileForm: ProfileForm(USER, true),
   }),

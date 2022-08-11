@@ -4,7 +4,7 @@ import * as styles from './index.module.less';
 export class ProfileAvatar extends Component {
   constructor(
     tag: string,
-    props: { attr?: { class?: string }; avatar: string; first_name: string }
+    props: { attr?: { class?: string }; avatar: string; firstName: string }
   ) {
     props.attr = { class: styles['container'] };
 

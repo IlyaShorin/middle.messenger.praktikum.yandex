@@ -35,7 +35,7 @@ export const changePasswordPage = new ChangePasswordPage('div', {
       },
     }),
     profileAvatar: new ProfileAvatar('div', {
-      first_name: USER.first_name,
+      firstName: USER.first_name,
       avatar: USER.avatar,
     }),
     submit: new PrimaryButton('button', {

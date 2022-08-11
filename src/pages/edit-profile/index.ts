@@ -20,7 +20,7 @@ export const editProfilePage = new EditProfileComponent('div', {
     attr: { class: styles['container'] },
     profileAvatar: new ProfileAvatar('div', {
       avatar: USER.avatar,
-      first_name: USER.first_name,
+      firstName: USER.first_name,
     }),
     profileForm: ProfileForm(USER, false),
     backFromProfileButton: new BackFromProfileButton('div', {
