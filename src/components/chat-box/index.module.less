@@ -1,10 +1,13 @@
 @import '../../styles/consts.less';
+
 .container {
   display: flex;
 }
+
 .container:hover {
   cursor: pointer;
 }
+
 .messageBlock {
   display: flex;
   flex-direction: column;
@@ -17,35 +20,41 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .recipientName {
   margin: 0;
   font-size: 13px;
   line-height: 13px;
 }
+
 .accent {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: black;
+  color: @black;
 }
+
 .message {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: #999999;
+  color: @message-color;
   margin-top: 4px;
 }
+
 .time {
   text-align: right;
   font-weight: 500;
   font-size: 9px;
   line-height: 13px;
 }
+
 .timeAndCountContainer {
   display: flex;
   flex-direction: column;
   text-align: end;
 }
+
 .messagesCount {
   width: 20px;
   height: 20px;
@@ -53,7 +62,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: @white;
   background-color: @primary-bg;
   align-self: end;
   font-weight: 500;
@@ -61,12 +70,14 @@
   line-height: 12px;
   margin-top: 14px;
 }
+
 .list {
   border-top: 1px solid @border-color;
   border-bottom: 1px solid @border-color;
   padding: 12px;
   width: 290px;
 }
+
 .list:hover {
-  background-color: #e4edfd;
+  background-color: @message-in-chats-hover;
 }

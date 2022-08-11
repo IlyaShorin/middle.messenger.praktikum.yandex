@@ -1,7 +1,9 @@
+@import '../../styles/consts.less';
 @radius: 12px;
 @maxWidth: 400px;
 @margin: 30px;
 @padding: 11px;
+
 .chatContent {
   height: 100%;
   display: flex;
@@ -10,9 +12,8 @@
 }
 
 .friendMessage {
-  background-color: #f8f8f8;
+  background-color: @friend-message-bg;
   border-radius: @radius;
-  text-align: center;
   max-width: 400px;
   padding: @padding;
   margin-bottom: @margin;
@@ -22,8 +23,7 @@
 
 .yourMessage {
   border-radius: @radius;
-  background-color: #e4edfd;
-  text-align: center;
+  background-color: @your-message-bg;
   max-width: 400px;
   align-self: flex-end;
   padding: @padding;

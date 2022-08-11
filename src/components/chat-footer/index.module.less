@@ -1,4 +1,5 @@
 @import '../../styles/consts.less';
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -8,6 +9,7 @@
   padding-top: 10px;
   align-items: center;
 }
+
 .attachButton {
   border: none;
   outline: none;
@@ -15,9 +17,16 @@
   width: fit-content;
   height: fit-content;
 }
+
 .attachButton:hover {
   cursor: pointer;
 }
+
+.form {
+  width: 100%;
+  padding: 10px;
+}
+
 .messageInput {
   width: 100%;
   background: @input-bg;
@@ -25,18 +34,23 @@
   border-radius: 30px;
   padding: 10px 0;
 }
+
 .messageInput::placeholder {
   padding-left: 15px;
 }
+
 .messageInput:focus::placeholder {
   color: transparent;
 }
+
 .messageInput:not(:placeholder-shown) {
   padding-left: 15px;
 }
+
 .messageInput:focus {
   padding-left: 15px;
 }
+
 .sendButton {
   background-color: @primary-bg;
   border: none;
@@ -46,6 +60,7 @@
   width: 28px;
   height: 28px;
 }
+
 .sendButton:hover {
   cursor: pointer;
 }

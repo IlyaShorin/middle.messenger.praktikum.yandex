@@ -1,13 +1,15 @@
 @import '../../styles/consts.less';
+
 .mainPage {
   height: 100%;
   display: flex;
 }
+
 .editProfileButton {
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
-  color: #999999;
+  color: #999;
   outline: none;
   border: none;
   background-color: transparent;
@@ -15,30 +17,37 @@
   margin-bottom: 23px;
   margin-top: 21px;
 }
+
 .editProfileButton:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
 .leftScreen {
   display: flex;
   flex-direction: column;
-  background-color: #fbfbfb;
+  background-color: @back-button-background;
   border-right: 1px solid @border-color;
 }
+
 .rightScreen {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-left: 15px;
 }
+
 .chatIsNotSelected {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
+
 .tipText {
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
-  color: #999999;
+  color: @message-color;
 }
