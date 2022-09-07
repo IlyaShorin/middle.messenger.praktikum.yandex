@@ -1,31 +1,7 @@
 import { Component } from '../../utils/component';
 import { ChatBox } from '../../components/chat-box';
+import { MESSAGES } from '../../utils/fixtures';
 import './index.less';
-
-const messagesArray = [
-  {
-    avatar: 'https://picsum.photos/200',
-    senderIsYou: true,
-    message: 'Привет земляне',
-    messageTime: '12:01',
-    recipientName: 'Вася',
-  },
-  {
-    avatar: 'https://picsum.photos/200',
-    senderIsYou: false,
-    message: 'Привет земляне',
-    messageTime: '12:01',
-    recipientName: 'Петя',
-  },
-  {
-    avatar: 'https://picsum.photos/200',
-    senderIsYou: true,
-    message: 'Привет земляне',
-    messageTime: '12:01',
-    recipientName: 'Батя',
-    count: 3,
-  },
-];
 
 class ChatListComponent extends Component {
   render() {
@@ -40,7 +16,7 @@ class ChatListComponent extends Component {
 export const ChatList = () =>
   new ChatListComponent('ul', {
     attr: { class: 'chatList' },
-    messages: messagesArray.map((message, index) =>
+    messages: MESSAGES.map((message, index) =>
       new ChatBox('li', {
         avatar: message.avatar,
         message: message.message,

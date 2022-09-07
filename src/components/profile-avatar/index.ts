@@ -17,7 +17,7 @@ export class ProfileAvatar extends Component {
   <div class='${styles['edit']}'>
     <button class='${styles['editButton']}'>Изменить аватар</button>
   </div>
-  <h2>{{first_name}}</h2>
+  <h2>{{{first_name}}}</h2>
 `;
   }
 }

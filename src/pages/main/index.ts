@@ -5,8 +5,9 @@ import { ChatList } from '../../containers/chat-list';
 import { ChatContainer } from '../../containers/chat-component';
 
 import './index.less';
+import { router } from '../../utils/router';
 
-class MainPage extends Component {
+class MainPageComponent extends Component {
   render() {
     return `
   <div class='leftScreen'>
@@ -26,7 +27,7 @@ class MainPage extends Component {
   }
 }
 
-export const mainPage = new MainPage('div', {
+export const MainPage = new MainPageComponent('div', {
   attr: { class: 'mainPage' },
   search: new Search('input', {
     attr: {
@@ -49,7 +50,7 @@ export const mainPage = new MainPage('div', {
     value: 'Профиль',
     events: {
       click: () => {
-        window.location.href = `${window.location.origin}/profile`;
+        router.go('/profile');
       },
     },
   }),

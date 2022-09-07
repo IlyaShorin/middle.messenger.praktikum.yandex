@@ -1,8 +1,9 @@
 import { Component } from '../../utils/component';
 import { LinkButton } from '../../components/link-button';
 import './index.less';
+import { router } from '../../utils/router';
 
-class ErrorOnServerPage extends Component {
+class ErrorOnServerPageComponent extends Component {
   render() {
     return `
    
@@ -13,13 +14,13 @@ class ErrorOnServerPage extends Component {
     `;
   }
 }
-export const errorOnServerPage = new ErrorOnServerPage('div', {
+export const ErrorOnServerPage = new ErrorOnServerPageComponent('div', {
   attr: { class: 'container' },
   linkButton: new LinkButton('button', {
     value: 'Назад',
     events: {
       click: () => {
-        history.back();
+        router.go('/main');
       },
     },
   }),

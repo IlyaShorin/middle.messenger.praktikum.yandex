@@ -4,8 +4,8 @@ import { EditProfile } from '../../containers/edit-profile';
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
 import { USER } from '../../utils/fixtures';
-
 import * as styles from './index.module.less';
+import { router } from '../../utils/router';
 
 class EditProfileComponent extends Component {
   render() {
@@ -14,7 +14,7 @@ class EditProfileComponent extends Component {
     `;
   }
 }
-export const editProfilePage = new EditProfileComponent('div', {
+export const EditProfilePage = new EditProfileComponent('div', {
   attr: { class: styles['container'] },
   editProfile: new EditProfile('div', {
     attr: { class: styles['container'] },
@@ -28,7 +28,7 @@ export const editProfilePage = new EditProfileComponent('div', {
         click: (e: MouseEvent) => {
           const div = e.target as HTMLElement;
           if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
-            window.location.href = `${window.location.origin}/profile`;
+            router.back();
           }
         },
       },

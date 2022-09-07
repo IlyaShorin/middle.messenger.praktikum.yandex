@@ -1,7 +1,7 @@
-import { queryStringify } from './helpers';
-import { METHODS } from './consts';
+import { queryStringify } from '../utils/helpers';
+import { METHODS } from '../utils/consts';
 
-class HTTPTransport {
+export class HTTPTransport {
   get = (
     url: string,
     options: { timeout?: number; method?: string; data?: {} } = {}
@@ -15,7 +15,15 @@ class HTTPTransport {
     );
   };
 
-  post = (url: string, options: { timeout?: number } = {}) => {
+  post = (
+    url: string,
+    options: {
+      timeout?: number;
+      method?: string;
+      data?: any;
+      headers?: Record<string, string>;
+    } = {}
+  ) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
@@ -23,7 +31,7 @@ class HTTPTransport {
     );
   };
 
-  put = (url: string, options: { timeout?: number } = {}) => {
+  put = (url: string, options: { timeout?: number; data?: {} } = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
@@ -51,11 +59,11 @@ class HTTPTransport {
     timeout = 5000
   ) => {
     const { method, data, headers } = options;
-
+    console.log(data);
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      xhr.open(method, url);
+      xhr.open(method, `https://ya-praktikum.tech/api/v2${url}`);
       for (let header in headers) {
         xhr.setRequestHeader(header, headers[header]!);
       }
@@ -71,7 +79,7 @@ class HTTPTransport {
       if (method === METHODS.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data as Document);
+        xhr.send(JSON.stringify(data));
       }
     });
   };

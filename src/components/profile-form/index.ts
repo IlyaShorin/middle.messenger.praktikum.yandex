@@ -2,10 +2,12 @@ import { Component } from '../../utils/component';
 import { submit } from '../../utils/submit';
 import { PrimaryButton } from '../primary-button';
 import { ProfileInput } from '../profile-input';
+
 import styles from './index.module.less';
 
 class ProfileFormComponent extends Component {
   render(): string {
+    console.log('render ProfileFormComponent');
     return `
 
   {{{profileInputFirstName}}}

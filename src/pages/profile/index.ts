@@ -5,17 +5,18 @@ import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
 import { LinkButton } from '../../components/link-button';
 import { USER } from '../../utils/fixtures';
-
+import store from '../../store';
 import * as styles from './index.module.less';
+import { router } from '../../utils/router';
 
-class ProfilePage extends Component {
+class ProfilePageComponent extends Component {
   render(): string {
     return `
       {{{profile}}}
   `;
   }
 }
-export const profilePage = new ProfilePage('div', {
+export const ProfilePage = new ProfilePageComponent('div', {
   attr: { class: styles['container'] },
   profile: new Profile('div', {
     editProfileButton: new LinkButton('button', {
@@ -23,7 +24,7 @@ export const profilePage = new ProfilePage('div', {
       value: 'Изменить данные',
       events: {
         click: () => {
-          window.location.href = `${window.location.origin}/edit-profile`;
+          router.go('/edit-profile');
         },
       },
     }),
@@ -32,7 +33,7 @@ export const profilePage = new ProfilePage('div', {
       value: 'Изменить пароль',
       events: {
         click: () => {
-          window.location.href = `${window.location.origin}/change-password`;
+          router.go('/change-password');
         },
       },
     }),
@@ -41,7 +42,7 @@ export const profilePage = new ProfilePage('div', {
       value: 'Выйти',
       events: {
         click: () => {
-          console.warn('Авторизация ещё не работает');
+          router.go('/login');
         },
       },
     }),
@@ -51,15 +52,19 @@ export const profilePage = new ProfilePage('div', {
         click: (e: MouseEvent) => {
           const div = e.target as HTMLElement;
           if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
-            window.location.href = `${window.location.origin}/main`;
+            router.go('/main');
           }
         },
       },
     }),
     profileAvatar: new ProfileAvatar('div', {
       avatar: USER.avatar,
-      firstName: USER.first_name,
+      firstName: store.user.user.first_name,
     }),
-    profileForm: ProfileForm(USER, true),
+    profileForm: ProfileForm(store.user.user, true),
   }),
 });
+setTimeout(() => {
+  console.log('timeout');
+  store.user.setUser();
+}, 1000);

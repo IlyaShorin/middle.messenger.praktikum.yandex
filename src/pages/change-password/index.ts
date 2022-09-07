@@ -7,8 +7,9 @@ import { ProfileInput } from '../../components/profile-input';
 import { PrimaryButton } from '../../components/primary-button';
 import { USER } from '../../utils/fixtures';
 import styles from './index.module.less';
+import { router } from '../../utils/router';
 
-class ChangePasswordPage extends Component {
+class ChangePasswordPageComponent extends Component {
   render(): string {
     return `
     {{{changePassword}}}
@@ -16,7 +17,7 @@ class ChangePasswordPage extends Component {
   }
 }
 
-export const changePasswordPage = new ChangePasswordPage('div', {
+export const ChangePasswordPage = new ChangePasswordPageComponent('div', {
   attr: { class: styles['container'] },
   changePassword: new ChangePassword('div', {
     attr: { class: styles['container'] },
@@ -29,7 +30,7 @@ export const changePasswordPage = new ChangePasswordPage('div', {
         click: (e: MouseEvent) => {
           const div = e.target as HTMLElement;
           if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
-            window.location.href = `${window.location.origin}/profile`;
+            router.back();
           }
         },
       },

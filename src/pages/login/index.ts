@@ -20,7 +20,7 @@ class LoginForm extends Component {
  `;
   }
 }
-export const loginPage = new LoginForm('div', {
+export const LoginPage = new LoginForm('div', {
   events: {
     submit,
   },

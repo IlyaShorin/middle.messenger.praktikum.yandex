@@ -1,39 +1,25 @@
-import { notFoundPage } from './pages/404';
-import { errorOnServerPage } from './pages/500';
-import { mainPage } from './pages/main';
-import { profilePage } from './pages/profile';
-import { editProfilePage } from './pages/edit-profile';
-import { changePasswordPage } from './pages/change-password';
-import { render } from './utils/renderDOM';
-import { loginPage } from './pages/login';
-import { signupPage } from './pages/signup';
+import { NotFoundPage } from './pages/404';
+import { ErrorOnServerPage } from './pages/500';
+import { MainPage } from './pages/main';
+import { ProfilePage } from './pages/profile';
+import { EditProfilePage } from './pages/edit-profile';
+import { ChangePasswordPage } from './pages/change-password';
+import { LoginPage } from './pages/login';
+import { SignupPage } from './pages/signup';
+import { router } from './utils/router';
 
-switch (window.location.pathname.slice(1)) {
-  case 'signup':
-    render('#root', signupPage);
-    break;
-  case 'login':
-    render('#root', loginPage);
-    break;
-  case '':
-    render('#root', loginPage);
-    break;
-  case 'main':
-    render('#root', mainPage);
-    break;
-  case 'profile':
-    render('#root', profilePage);
-    break;
-  case 'edit-profile':
-    render('#root', editProfilePage);
-    break;
-  case 'change-password':
-    render('#root', changePasswordPage);
-    break;
-  case '500':
-    render('#root', errorOnServerPage);
-    break;
-  default:
-    render('#root', notFoundPage);
-    break;
+router
+  .use('/login', LoginPage)
+  .use('/', LoginPage)
+  .use('/signup', SignupPage)
+  .use('/main', MainPage)
+  .use('/profile', ProfilePage)
+  .use('/edit-profile', EditProfilePage)
+  .use('/change-password', ChangePasswordPage)
+  .use('/500', ErrorOnServerPage)
+  .use('/404', NotFoundPage)
+  .start();
+
+if (!router.getRoute(window.location.pathname)) {
+  router.go('/404');
 }
