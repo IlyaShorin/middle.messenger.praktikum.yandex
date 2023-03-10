@@ -2,17 +2,19 @@ import { Component } from '../../utils/component';
 import { submit } from '../../utils/submit';
 import { PrimaryButton } from '../primary-button';
 import { ProfileInput } from '../profile-input';
-
 import styles from './index.module.less';
 
 class ProfileFormComponent extends Component {
+  constructor(tag: string, props: {}) {
+    super(tag, props);
+  }
   render(): string {
-    console.log('render ProfileFormComponent');
+    console.log(this);
     return `
 
   {{{profileInputFirstName}}}
   {{{profileInputSecondName}}}
-  {{{profileInputDisaplyName}}}
+  {{{profileInputDisplayName}}}
   {{{profileInputLogin}}}
   {{{profileInputEmail}}}
   {{{profileInputPhone}}}
@@ -26,6 +28,7 @@ class ProfileFormComponent extends Component {
 }
 
 export const ProfileForm = (
+  disabled: boolean,
   user: {
     email: string;
     login: string;
@@ -35,8 +38,7 @@ export const ProfileForm = (
     display_name: string;
     avatar: string;
     password: string;
-  },
-  disabled: boolean
+  }
 ) =>
   new ProfileFormComponent('form', {
     attr: { class: styles['form'] },
@@ -46,13 +48,13 @@ export const ProfileForm = (
       attr: { type: 'submit' },
     }),
     events: {
-      submit,
+      submit: (e: SubmitEvent) => submit(e, 'editProfile'),
     },
     profileInputFirstName: new ProfileInput('div', {
       name: 'first_name',
       placeholder: user.first_name,
       label: 'Имя',
-      value: user['first_name']!,
+      value: user.first_name,
       type: 'text',
       disabled,
     }),
@@ -82,17 +84,17 @@ export const ProfileForm = (
     }),
     profileInputEmail: new ProfileInput('div', {
       name: 'email',
-      placeholder: user.email,
+      placeholder: user?.email,
       label: 'Email',
-      value: user.email,
+      value: user?.email,
       type: 'email',
       disabled,
     }),
     profileInputPhone: new ProfileInput('div', {
       name: 'phone',
-      placeholder: user.phone,
-      label: 'Имя',
-      value: user.phone,
+      placeholder: user?.phone,
+      label: 'Телефон',
+      value: user?.phone,
       type: 'tel',
       disabled,
     }),

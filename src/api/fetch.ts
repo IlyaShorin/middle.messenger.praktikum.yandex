@@ -4,7 +4,12 @@ import { METHODS } from '../utils/consts';
 export class HTTPTransport {
   get = (
     url: string,
-    options: { timeout?: number; method?: string; data?: {} } = {}
+    options: {
+      timeout?: number;
+      method?: string;
+      data?: {};
+      headers?: Record<string, string>;
+    } = {}
   ) => {
     const { data } = options;
     url = `${url}${queryStringify(data as {})}`;
@@ -59,8 +64,8 @@ export class HTTPTransport {
     timeout = 5000
   ) => {
     const { method, data, headers } = options;
-    console.log(data);
-    return new Promise((resolve, reject) => {
+
+    return new Promise((resolve: (value: XMLHttpRequest) => void, reject) => {
       const xhr = new XMLHttpRequest();
 
       xhr.open(method, `https://ya-praktikum.tech/api/v2${url}`);
@@ -73,6 +78,7 @@ export class HTTPTransport {
 
       xhr.onabort = reject;
       xhr.onerror = reject;
+      xhr.withCredentials = true;
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 

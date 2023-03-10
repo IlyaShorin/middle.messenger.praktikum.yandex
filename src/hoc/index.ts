@@ -1,34 +1,19 @@
-import { Component as ComponentType } from '../utils/component';
-import store, { StoreEvents } from '../store';
+import { Component } from '../utils/component';
+
 import { Indexed } from '../utils/types';
-import { isEqual } from '../utils/is-equal';
+import newStore from '../store/new-store';
+import { StoreEvents } from '../store/new-store';
 
-export const connect = (mapStateToProps: (state: Indexed) => Indexed) => {
-  // используем class expression
-  return function (Component: typeof ComponentType) {
-    return class extends Component {
-      constructor(props) {
-        super({ ...props, ...mapStateToProps(store.getState()) });
-        let state = mapStateToProps(store.getState());
+export default function connect(Component, mapStateToProps) {
+  return class extends Component {
+    constructor(tag, props = {}) {
+      const store = new newStore();
 
-        store.on(StoreEvents.Updated, () => {
-          const newState = mapStateToProps(store.getState());
+      super(tag, { ...props, ...mapStateToProps(store.getState()) });
 
-          if (!isEqual(state, newState)) {
-            this.setProps({ ...newState });
-          }
-
-          // не забываем сохранить новое состояние
-          state = newState;
-        });
-      }
-    };
-  };
-};
-
-function mapUserToProps(state) {
-  return {
-    name: state.user.name,
-    avatar: state.user.avatar,
+      store.attach(Store.EVENT_UPDATE, () => {
+        this.setProps({ ...mapStateToProps(store.getState()) });
+      });
+    }
   };
 }

@@ -2,9 +2,8 @@ import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './event-bus';
 import { BaseStore, StoreEvents } from '../store/base';
-import store from '../store';
 
-export abstract class Component {
+export class Component {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -28,7 +27,6 @@ export abstract class Component {
   _id;
 
   _update = false;
-  _originalProps;
 
   /** JSDoc
    * @param {string} tagName
@@ -40,14 +38,13 @@ export abstract class Component {
     const { children, props } = this.getChildren(propsAndChilds);
     this._element = this.element;
     this._id = makeUUID();
-    this._originalProps = props;
 
     this._meta = {
       tagName,
       props,
     };
 
-    this._props = this.makePropsProxy({ ...this._originalProps, id: this._id });
+    this._props = this.makePropsProxy({ ...props, id: this._id });
     this._eventBus = new EventBus();
 
     this._children = this.makePropsProxy(children);
@@ -56,7 +53,8 @@ export abstract class Component {
     this._eventBus.emit(Component.EVENTS.INIT);
     BaseStore.eventBus.on(StoreEvents.Updated, (store) => {
       // if (!isEqual(state, newState)) {
-      this.setProps({ ...store });
+      // console.log(store);
+      this.setProps({ store });
       // }
     });
   }
@@ -96,7 +94,7 @@ export abstract class Component {
     this.addAttribute();
   }
 
-  abstract render(): string;
+  render() {}
 
   addEvents() {
     const { events = {} } = this._props;
@@ -178,7 +176,6 @@ export abstract class Component {
   }
 
   private _componentDidUpdate(oldProps: {}, newProps: {}) {
-    console.log('did update');
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;

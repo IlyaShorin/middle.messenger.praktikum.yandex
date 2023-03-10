@@ -22,7 +22,7 @@ class LoginForm extends Component {
 }
 export const LoginPage = new LoginForm('div', {
   events: {
-    submit,
+    submit: (e: SubmitEvent) => submit(e, 'login'),
   },
   submit: new PrimaryButton('button', {
     value: 'Войти',

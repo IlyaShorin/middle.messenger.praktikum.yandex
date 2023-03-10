@@ -1,5 +1,6 @@
 import { Component } from '../../utils/component';
 import { validationListener } from '../../utils/validation';
+
 import * as styles from './index.module.less';
 
 export class ProfileInput extends Component {
@@ -8,8 +9,8 @@ export class ProfileInput extends Component {
     props: {
       attr?: { class?: string };
       name: string;
-      placeholder: string;
-      value: string;
+      placeholder?: string;
+      value?: string;
       label: string;
       type: string;
       disabled?: boolean;

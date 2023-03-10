@@ -3,7 +3,7 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { EditProfile } from '../../containers/edit-profile';
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
-import { USER } from '../../utils/fixtures';
+import store from '../../store/index';
 import * as styles from './index.module.less';
 import { router } from '../../utils/router';
 
@@ -19,10 +19,10 @@ export const EditProfilePage = new EditProfileComponent('div', {
   editProfile: new EditProfile('div', {
     attr: { class: styles['container'] },
     profileAvatar: new ProfileAvatar('div', {
-      avatar: USER.avatar,
-      firstName: USER.first_name,
+      avatar: store.user.user?.avatar,
+      firstName: store.user.user?.first_name,
     }),
-    profileForm: ProfileForm(USER, false),
+    profileForm: ProfileForm(false, store.user.user),
     backFromProfileButton: new BackFromProfileButton('div', {
       events: {
         click: (e: MouseEvent) => {

@@ -1,14 +1,3 @@
-export const USER = {
-  email: 'shorin@mail.ru',
-  login: 'ishorin',
-  first_name: 'Илья',
-  second_name: 'Шорин',
-  phone: '+799912345678',
-  display_name: 'Илья',
-  avatar: 'https://picsum.photos/200',
-  password: 'qwerty123A',
-};
-
 export const MESSAGES = [
   {
     avatar: 'https://picsum.photos/200',

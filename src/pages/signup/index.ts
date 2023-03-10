@@ -4,7 +4,6 @@ import { Component } from '../../utils/component';
 import { submit } from '../../utils/submit';
 import styles from './index.module.less';
 import { LinkButton } from '../../components/link-button';
-import { connect } from '../../hoc';
 
 class SignupForm extends Component {
   render() {
@@ -28,7 +27,7 @@ class SignupForm extends Component {
 
 export const SignupPage = new SignupForm('div', {
   events: {
-    submit,
+    submit: (e: SubmitEvent) => submit(e, 'signup'),
   },
   email: new Input('label', {
     label: 'Email',

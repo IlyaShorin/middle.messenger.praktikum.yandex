@@ -1,20 +1,19 @@
-import { UserAPI } from '../api/user';
+import { UserAPI } from '../../api/user';
 import {
   CreateUserRequest,
   EditUserRequest,
   LoginUserRequest,
-  User,
-} from '../utils/types';
-import { BaseStore } from './base';
+} from '../../utils/types';
+import newStore from './index';
 
-export class UserStore extends BaseStore {
+export class UserStore {
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
 
   async getUser() {
     const res = await UserAPI.getUser();
     this.user = JSON.parse(res.response);
     localStorage.setItem('user', JSON.stringify(this.user));
-
+    newStore.set('user', JSON.parse(res.response));
     return this.user;
   }
 
@@ -38,11 +37,11 @@ export class UserStore extends BaseStore {
   async logoutUser() {
     try {
       await UserAPI.logoutUser();
-      localStorage.removeItem('user');
     } catch (e) {
       throw new Error(e);
     }
   }
+
   async editUser(user: EditUserRequest) {
     try {
       await UserAPI.editUser(user);

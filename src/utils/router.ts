@@ -84,7 +84,9 @@ export class Router {
 
     this._onRoute(window.location.pathname);
   }
-
+  get currentRoute() {
+    return this._currentRoute;
+  }
   _onRoute(pathname: string) {
     const route = this.getRoute(pathname);
 
