@@ -5,7 +5,7 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileInput } from '../../components/profile-input';
 import { PrimaryButton } from '../../components/primary-button';
-import store from '../../store/_index';
+import store, { userStore } from '../../store/new-store';
 import styles from './index.module.less';
 import { router } from '../../utils/router';
 
@@ -36,8 +36,8 @@ export const ChangePasswordPage = new ChangePasswordPageComponent('div', {
       },
     }),
     profileAvatar: new ProfileAvatar('div', {
-      firstName: store.user.user.first_name,
-      avatar: store.user.user.avatar,
+      firstName: userStore.user.first_name,
+      avatar: userStore.user.avatar,
     }),
     submit: new PrimaryButton('button', {
       attr: {
@@ -49,7 +49,7 @@ export const ChangePasswordPage = new ChangePasswordPageComponent('div', {
       name: 'password',
       placeholder: '',
       label: 'Пароль',
-      value: store.user.user.password,
+      value: userStore.user.password,
       type: 'password',
     }),
     profileInputPassword: new ProfileInput('div', {

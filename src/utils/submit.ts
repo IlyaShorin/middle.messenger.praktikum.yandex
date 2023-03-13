@@ -1,5 +1,5 @@
 import { validationListener } from './validation';
-import store from '../store/_index';
+import store, { userStore } from '../store/new-store';
 import { router } from './router';
 
 export const submit = async (e: SubmitEvent, formName: string) => {
@@ -17,13 +17,13 @@ export const submit = async (e: SubmitEvent, formName: string) => {
     }
 
     if (formName === 'login') {
-      await store.user.loginUser({
+      await userStore.loginUser({
         login: data.get('login') as string,
         password: data.get('password') as string,
       });
       router.go('/main');
     } else if (formName === 'signup') {
-      await store.user.registerUser({
+      await userStore.registerUser({
         first_name: data.get('first_name') as string,
         second_name: data.get('second_name') as string,
         login: data.get('login') as string,
@@ -33,7 +33,7 @@ export const submit = async (e: SubmitEvent, formName: string) => {
       });
       router.go('/login');
     } else if (formName === 'editProfile') {
-      await store.user.editUser({
+      await userStore.editUser({
         first_name: data.get('first_name') as string,
         second_name: data.get('second_name') as string,
         login: data.get('login') as string,
