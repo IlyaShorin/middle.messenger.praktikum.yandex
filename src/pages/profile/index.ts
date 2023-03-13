@@ -8,11 +8,24 @@ import store from '../../store/index';
 import * as styles from './index.module.less';
 import { router } from '../../utils/router';
 import Connect from '../../store/new-store/connect';
+import { isEqual } from '../../utils/is-equal';
 
 class ProfilePageComponent extends Component {
   constructor(tag: string, props: {}) {
     super(tag, props);
   }
+  componentDidMount(): void {
+    this.setProps(this._props.store);
+  }
+
+  componentDidUpdate(newProps: any, oldPorps: any) {
+    console.log(oldPorps, newProps);
+    if (!isEqual(newProps.user, oldPorps.user)) {
+      //@ts-ignore
+      console.log(this._children);
+    }
+  }
+
   render(): string {
     return `
       {{{profile}}}
@@ -24,6 +37,7 @@ const ConnectPage = Connect(ProfilePageComponent, (store) => {
 });
 
 export const ProfilePage = new ConnectPage('div', {
+  store,
   attr: { class: styles['container'] },
   profile: new Profile('div', {
     editProfileButton: new LinkButton('button', {
@@ -72,7 +86,7 @@ export const ProfilePage = new ConnectPage('div', {
     profileForm: ProfileForm(true, store.user.user),
   }),
 });
-console.log('ProfilePage props: ', ProfilePage._props);
+// console.log('ProfilePage props: ', ProfilePage._props);
 
 // export const ProfilePage = new ProfilePageComponent('div', {
 //   attr: { class: styles['container'] },

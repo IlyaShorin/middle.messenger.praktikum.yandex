@@ -20,6 +20,10 @@ export class ProfileInput extends Component {
     super(tag, props);
   }
 
+  componentDidMount(): void {
+    this.setProps(this._props);
+  }
+
   addEvents(): void {
     this.element.querySelector('input')!.addEventListener('focus', () =>
       validationListener({

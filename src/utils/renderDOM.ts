@@ -11,6 +11,7 @@ export function render(query: string, block: Component) {
   if (root) {
     removeAllChildNodes(root);
     root.appendChild(block.element);
+    block.dispatchComponentDidMount();
   }
 
   return root;

@@ -15,7 +15,6 @@ export const submit = async (e: SubmitEvent, formName: string) => {
     for (const [key, value] of data) {
       console.log(key, ':', value);
     }
-    console.log(store.user.user);
 
     if (formName === 'login') {
       await store.user.loginUser({

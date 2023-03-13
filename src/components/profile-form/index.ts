@@ -5,11 +5,14 @@ import { ProfileInput } from '../profile-input';
 import styles from './index.module.less';
 
 class ProfileFormComponent extends Component {
-  constructor(tag: string, props: {}) {
+  constructor(tag: string, props: any) {
     super(tag, props);
   }
+  componentDidMount(): void {
+    console.log('profile form mount');
+    console.log(this._props);
+  }
   render(): string {
-    console.log(this);
     return `
 
   {{{profileInputFirstName}}}
@@ -47,6 +50,7 @@ export const ProfileForm = (
       value: 'Сохранить',
       attr: { type: 'submit' },
     }),
+    user,
     events: {
       submit: (e: SubmitEvent) => submit(e, 'editProfile'),
     },

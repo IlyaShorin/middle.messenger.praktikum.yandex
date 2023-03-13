@@ -183,7 +183,7 @@ export class Component {
     this._eventBus.emit(Component.EVENTS.FLOW_RENDER);
   }
 
-  componentDidUpdate(oldProps: {}, newProps: {}) {
+  componentDidUpdate(oldProps: {}, newProps: {}): any {
     if (JSON.stringify(oldProps) !== JSON.stringify(newProps)) {
       return true;
     }
