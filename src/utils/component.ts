@@ -61,7 +61,7 @@ export class Component {
   }
 
   private _registerEvents() {
-    this._eventBus.on(Component.EVENTS.INIT, this.init.bind(this));
+    this._eventBus.on(Component.EVENTS.INIT, this._init.bind(this));
     this._eventBus.on(
       Component.EVENTS.FLOW_CDM,
       this._componentDidMount.bind(this)
@@ -73,8 +73,9 @@ export class Component {
     this._eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  init() {
+  _init() {
     this._element = this._createDocumentElement(this._meta?.tagName);
+    this.init();
     this._eventBus.emit(Component.EVENTS.FLOW_RENDER);
   }
 
@@ -96,6 +97,8 @@ export class Component {
   }
 
   render() {}
+
+  init() {}
 
   addEvents() {
     const { events = {} } = this._props;

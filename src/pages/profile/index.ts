@@ -14,17 +14,6 @@ class ProfilePageComponent extends Component {
   constructor(tag: string, props: {}) {
     super(tag, props);
   }
-  componentDidMount(): void {
-    this.setProps(this._props.store);
-  }
-
-  componentDidUpdate(newProps: any, oldPorps: any) {
-    console.log(store);
-    if (!isEqual(newProps.user, oldPorps.user)) {
-      //@ts-ignore
-      console.log(this._children);
-    }
-  }
 
   render(): string {
     return `
@@ -37,102 +26,9 @@ const ConnectPage = Connect(ProfilePageComponent, (store) => {
 });
 
 export const ProfilePage = new ConnectPage('div', {
-  store,
   attr: { class: styles['container'] },
   profile: new Profile('div', {
-    editProfileButton: new LinkButton('button', {
-      attr: { class: styles['text'] },
-      value: 'Изменить данные',
-      events: {
-        click: () => {
-          router.go('/edit-profile');
-        },
-      },
-    }),
-    changePasswordButton: new LinkButton('button', {
-      attr: { class: styles['text'] },
-      value: 'Изменить пароль',
-      events: {
-        click: () => {
-          router.go('/change-password');
-        },
-      },
-    }),
-    exitButton: new LinkButton('button', {
-      attr: { class: `${styles['text']} ${styles['warningText']}` },
-      value: 'Выйти',
-      events: {
-        click: () => {
-          userStore.logoutUser();
-          router.go('/login');
-        },
-      },
-    }),
     attr: { class: styles['container'] },
-    backFromProfileButton: new BackFromProfileButton('div', {
-      events: {
-        click: (e: MouseEvent) => {
-          const div = e.target as HTMLElement;
-          if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
-            router.go('/main');
-          }
-        },
-      },
-    }),
-    profileAvatar: new ProfileAvatar('div', {
-      avatar: userStore.user.avatar,
-      firstName: userStore.user.first_name,
-    }),
-    profileForm: ProfileForm(true, userStore.user),
+    store,
   }),
 });
-// console.log('ProfilePage props: ', ProfilePage._props);
-
-// export const ProfilePage = new ProfilePageComponent('div', {
-//   attr: { class: styles['container'] },
-//   profile: new Profile('div', {
-//     editProfileButton: new LinkButton('button', {
-//       attr: { class: styles['text'] },
-//       value: 'Изменить данные',
-//       events: {
-//         click: () => {
-//           router.go('/edit-profile');
-//         },
-//       },
-//     }),
-//     changePasswordButton: new LinkButton('button', {
-//       attr: { class: styles['text'] },
-//       value: 'Изменить пароль',
-//       events: {
-//         click: () => {
-//           router.go('/change-password');
-//         },
-//       },
-//     }),
-//     exitButton: new LinkButton('button', {
-//       attr: { class: `${styles['text']} ${styles['warningText']}` },
-//       value: 'Выйти',
-//       events: {
-//         click: () => {
-//           router.go('/login');
-//         },
-//       },
-//     }),
-//     attr: { class: styles['container'] },
-//     backFromProfileButton: new BackFromProfileButton('div', {
-//       events: {
-//         click: (e: MouseEvent) => {
-//           const div = e.target as HTMLElement;
-//           if (div.tagName === 'BUTTON' || div.tagName === 'IMG') {
-//             router.go('/main');
-//           }
-//         },
-//       },
-//     }),
-//     profileAvatar: new ProfileAvatar('div', {
-//       avatar: store.user.user.avatar,
-//       firstName: store.user.user.first_name,
-//     }),
-//     profileForm: ProfileForm(true, store.user.user),
-//   }),
-// });

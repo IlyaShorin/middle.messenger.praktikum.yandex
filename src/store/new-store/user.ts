@@ -4,6 +4,7 @@ import {
   EditUserRequest,
   LoginUserRequest,
 } from '../../utils/types';
+import { router } from '../../utils/router';
 import newStore from './index';
 
 export class UserStore {
@@ -38,6 +39,7 @@ export class UserStore {
     try {
       await UserAPI.logoutUser();
       localStorage.removeItem('user');
+      router.go('/login');
     } catch (e) {
       throw new Error(e);
     }
