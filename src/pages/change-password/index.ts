@@ -5,7 +5,7 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileInput } from '../../components/profile-input';
 import { PrimaryButton } from '../../components/primary-button';
-import store from '../../store/index';
+import store from '../../store/_index';
 import styles from './index.module.less';
 import { router } from '../../utils/router';
 

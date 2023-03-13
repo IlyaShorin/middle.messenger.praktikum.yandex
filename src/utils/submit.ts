@@ -1,5 +1,5 @@
 import { validationListener } from './validation';
-import store from '../store/index';
+import store from '../store/_index';
 import { router } from './router';
 
 export const submit = async (e: SubmitEvent, formName: string) => {

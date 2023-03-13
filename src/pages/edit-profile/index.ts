@@ -3,7 +3,7 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { EditProfile } from '../../containers/edit-profile';
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
-import store from '../../store/index';
+import store from '../../store/_index';
 import * as styles from './index.module.less';
 import { router } from '../../utils/router';
 

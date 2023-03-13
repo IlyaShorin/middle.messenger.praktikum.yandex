@@ -1,7 +1,8 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './event-bus';
-import { BaseStore, StoreEvents } from '../store/base';
+import { BaseStore, StoreEvents } from '../store/_base';
+import Store from '../store/new-store/Store';
 
 export class Component {
   static EVENTS = {
@@ -51,12 +52,12 @@ export class Component {
 
     this._registerEvents();
     this._eventBus.emit(Component.EVENTS.INIT);
-    BaseStore.eventBus.on(StoreEvents.Updated, (store) => {
-      // if (!isEqual(state, newState)) {
-      // console.log(store);
-      this.setProps({ store });
-      // }
-    });
+    // BaseStore.eventBus.on(StoreEvents.Updated, (store) => {
+    //   // if (!isEqual(state, newState)) {
+    //   // console.log(store);
+    //   this.setProps({ store });
+    //   // }
+    // });
   }
 
   private _registerEvents() {

@@ -5,7 +5,7 @@ import {
   LoginUserRequest,
   User,
 } from '../utils/types';
-import { BaseStore } from './base';
+import { BaseStore } from './_base';
 
 export class UserStore extends BaseStore {
   user: any = JSON.parse(localStorage.getItem('user') || '{}');

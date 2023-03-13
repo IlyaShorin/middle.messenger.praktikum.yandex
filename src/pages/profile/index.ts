@@ -4,7 +4,7 @@ import { BackFromProfileButton } from '../../components/back-from-profile-button
 import { ProfileAvatar } from '../../components/profile-avatar';
 import { ProfileForm } from '../../components/profile-form';
 import { LinkButton } from '../../components/link-button';
-import store from '../../store/index';
+import store, { userStore } from '../../store/new-store/index';
 import * as styles from './index.module.less';
 import { router } from '../../utils/router';
 import Connect from '../../store/new-store/connect';
@@ -19,7 +19,7 @@ class ProfilePageComponent extends Component {
   }
 
   componentDidUpdate(newProps: any, oldPorps: any) {
-    console.log(oldPorps, newProps);
+    console.log(store);
     if (!isEqual(newProps.user, oldPorps.user)) {
       //@ts-ignore
       console.log(this._children);
@@ -63,7 +63,7 @@ export const ProfilePage = new ConnectPage('div', {
       value: 'Выйти',
       events: {
         click: () => {
-          store.user.logoutUser();
+          userStore.logoutUser();
           router.go('/login');
         },
       },
@@ -80,10 +80,10 @@ export const ProfilePage = new ConnectPage('div', {
       },
     }),
     profileAvatar: new ProfileAvatar('div', {
-      avatar: store.user.user.avatar,
-      firstName: store.user.user.first_name,
+      avatar: userStore.user.avatar,
+      firstName: userStore.user.first_name,
     }),
-    profileForm: ProfileForm(true, store.user.user),
+    profileForm: ProfileForm(true, userStore.user),
   }),
 });
 // console.log('ProfilePage props: ', ProfilePage._props);

@@ -37,6 +37,7 @@ export class UserStore {
   async logoutUser() {
     try {
       await UserAPI.logoutUser();
+      localStorage.removeItem('user');
     } catch (e) {
       throw new Error(e);
     }

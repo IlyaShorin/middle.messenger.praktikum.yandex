@@ -7,7 +7,7 @@ import { ChangePasswordPage } from './pages/change-password';
 import { LoginPage } from './pages/login';
 import { SignupPage } from './pages/signup';
 import { router } from './utils/router';
-import store from './store/index';
+import store from './store/_index';
 
 router
   .use('/login', LoginPage)
